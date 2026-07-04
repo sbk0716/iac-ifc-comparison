@@ -1,0 +1,20 @@
+{
+  "name": "demo-cdk-secure-s3",
+  "version": "0.1.0",
+  "private": true,
+  "description": "IaC/IfC 比較デモ — AWS CDK で S3 の非機能を実装し、cdk-nag + アサーションで deploy 前に検証する",
+  "scripts": {
+    "test": "vitest run",
+    "synth": "cdk synth"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "aws-cdk": "^2.150.0",
+    "aws-cdk-lib": "^2.150.0",
+    "cdk-nag": "^2.34.0",
+    "constructs": "^10.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.1.0"
+  }
+}

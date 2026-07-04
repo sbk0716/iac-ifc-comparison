@@ -1,0 +1,3 @@
+name: secure-s3
+runtime: nodejs
+description: S3 の非機能 (public block / SSE-KMS / CORS) を pulumi preview/up 時に mandatory 強制する PolicyPack

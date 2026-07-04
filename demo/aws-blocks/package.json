@@ -1,0 +1,16 @@
+{
+  "name": "demo-aws-blocks-secure-s3",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AWS Blocks (IfC, preview) で S3 (FileBucket) を書き、生成 CFN を cfn-guard で検証するデモ",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aws-blocks/blocks": "^0.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

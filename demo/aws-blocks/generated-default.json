@@ -1,0 +1,21 @@
+{
+  "Resources": {
+    "UserUploads": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "user-uploads-default",
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            { "ServerSideEncryptionByDefault": { "SSEAlgorithm": "AES256" } }
+          ]
+        }
+      }
+    }
+  }
+}

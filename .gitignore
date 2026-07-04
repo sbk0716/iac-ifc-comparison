@@ -1,0 +1,33 @@
+# --- dependencies ---
+node_modules/
+
+# --- AWS CDK ---
+cdk.out/
+*.js
+*.d.ts
+
+# --- Terraform / OpenTofu ---
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# --- Pulumi ---
+Pulumi.*.yaml.bak
+
+# --- Wing ---
+target/
+
+# --- AWS Blocks (Infrastructure from Code) ---
+.bb-data/
+
+# --- secrets / env ---
+.env
+.env.*
+!.env.example
+
+# --- misc ---
+.DS_Store
+*.log
+dist/
+build/

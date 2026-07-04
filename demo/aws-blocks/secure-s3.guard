@@ -1,0 +1,28 @@
+# cfn-guard ルール: AWS Blocks が生成した CloudFormation の S3 バケットが
+# 非機能を満たすかを deploy 前に検査する (IfC の生成物への後段ゲート)。
+#
+# 使い方:
+#   cdk synth --conditions=cdk > template.json
+#   cfn-guard validate --rules secure-s3.guard --data template.json
+#
+# 素の FileBucket 出力では Versioning / CMK が満たされず違反になる (=穴の可視化)。
+
+rule s3_buckets_meet_nfr when Resources exists {
+  let s3_buckets = Resources.*[ Type == 'AWS::S3::Bucket' ]
+
+  when %s3_buckets !empty {
+    %s3_buckets.Properties {
+      # NFR: Public アクセス禁止
+      PublicAccessBlockConfiguration.BlockPublicAcls == true
+      PublicAccessBlockConfiguration.BlockPublicPolicy == true
+      PublicAccessBlockConfiguration.IgnorePublicAcls == true
+      PublicAccessBlockConfiguration.RestrictPublicBuckets == true
+
+      # NFR: Versioning (FileBucket 既定 false のためここで落ちる)
+      VersioningConfiguration.Status == 'Enabled'
+
+      # NFR: 暗号化が SSE-KMS (CMK) であること (FileBucket は SSE-S3 固定のためここで落ちる)
+      BucketEncryption.ServerSideEncryptionConfiguration[*].ServerSideEncryptionByDefault.SSEAlgorithm == 'aws:kms'
+    }
+  }
+}

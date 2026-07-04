@@ -1,0 +1,11 @@
+{
+  "name": "secure-s3-policy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CrossGuard PolicyPack — S3 非機能を deploy 前に mandatory 強制",
+  "dependencies": {
+    "@pulumi/aws": "^6.0.0",
+    "@pulumi/policy": "^1.0.0",
+    "@pulumi/pulumi": "^3.0.0"
+  }
+}
